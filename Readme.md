@@ -1,34 +1,61 @@
-# SARSA on CliffWalking
+# Cliff Walking with SARSA and Q-Learning
 
-## Project Overview
-This project explores the implementation of the SARSA (State–Action–Reward–State–Action) reinforcement learning algorithm to solve the CliffWalking environment. The objective is to train an agent that can navigate from the starting point to the goal while avoiding the cliff.
+This project explores **Reinforcement Learning** by implementing two algorithms — **SARSA** and **Q-Learning** — in the Cliff Walking environment.
 
+The goal of the agent is to move from the **start position to the goal** while avoiding the cliff. If the agent steps into the cliff, it receives a large negative reward and returns to the starting position.
+
+By implementing both algorithms, this project demonstrates how different reinforcement learning strategies affect the behaviour of an agent.
 
 ## Environment
-The CliffWalking environment is a grid-based world where the agent must move from the start position to the goal. The bottom row contains a cliff, and stepping into it results in a large negative reward and resets the agent to the start position.
 
-Through repeated interactions, the agent learns to avoid the cliff and follow a safer path along the grid.
+The Cliff Walking environment is a grid world where:
 
-## Learning Approach
-The project uses the SARSA algorithm, an on-policy reinforcement learning method. The agent updates its knowledge of the environment based on the current state, action taken, reward received, and the next state-action pair.
+* The agent starts at the bottom-left corner
+* The goal is at the bottom-right corner
+* The cells between them represent a cliff
+* Falling into the cliff gives a large negative reward
 
-To balance exploration and exploitation, the agent follows an epsilon-greedy strategy, allowing it to explore different actions while gradually favoring better ones.
+The agent must learn the best path to reach the goal efficiently.
 
-## Results
-After training over multiple episodes, the agent learns to navigate the environment safely and reach the goal while avoiding the cliff. The trained agent demonstrates how reinforcement learning can help systems learn optimal behavior through experience.
+## SARSA Implementation
 
-## Key Takeaways
-- Understanding the fundamentals of reinforcement learning
-- Learning how on-policy methods like SARSA work
-- Observing how agents improve through interaction with an environment
-- Gaining practical insight into exploration vs exploitation
+SARSA is an **on-policy reinforcement learning algorithm**. It updates its knowledge using the action that the agent actually takes according to its current policy.
 
-## Future Improvements
-- Compare SARSA with other reinforcement learning algorithms
-- Experiment with different exploration strategies
-- Apply reinforcement learning to more complex environments
+Because of this learning strategy, the agent tends to learn a **safer path** that stays farther away from the cliff.
+
+### Agent behaviour using SARSA
+
+![SARSA Agent Path](assets/sarsa.gif)
+
+## Q-Learning Implementation
+
+Q-Learning is an **off-policy reinforcement learning algorithm**. Instead of following the current action policy strictly, it learns by considering the **best possible action** from the next state.
+
+This allows the agent to eventually learn the **optimal path** from the start to the goal.
+
+### Agent behaviour using Q-Learning
+
+![Q-Learning Optimal Path](assets/q-learning.gif)
+
+## Key Observation
+
+Running both algorithms on the same environment reveals an interesting difference:
+
+* **SARSA** learns a safer route that avoids getting too close to the cliff
+* **Q-Learning** eventually finds the **optimal shortest path** to reach the goal
+
+This comparison helps build an intuitive understanding of how different reinforcement learning strategies influence agent behaviour.
+
+
+## What I Learned
+
+* Reinforcement learning fundamentals
+* Temporal difference learning
+* Differences between on-policy and off-policy learning
+* Training an agent in a grid-based environment
 
 ## Author
-Amrita Chaturvedi  
-B.Tech Computer Science Engineering  
-Interested in Machine Learning and Reinforcement Learning
+
+Amrita Chaturvedi
+B.Tech Computer Science and Engineering
+Exploring Machine Learning and Reinforcement Learning
